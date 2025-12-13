@@ -2,7 +2,6 @@
 <template>
     <Navbar />
     <Hero />
-    <LocationTag />
     <FeaturedProjects />
     <StudioSection />
     <ServicesSection />

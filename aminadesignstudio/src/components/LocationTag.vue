@@ -1,22 +1,37 @@
-<!-- Simple location tag with an emoji wrapper -->
 <template>
   <div class="location">
     📍 Toronto, Canada
   </div>
 </template>
 
-<!-- Options API format ----------------------------------->
 <script>
-  export default {
-    name: "LocationTag"
-  }
+export default {
+  name: "LocationTag"
+}
 </script>
 
-<!-- Scoped CSS = styles apply only to this component ----------------------->
 <style scoped>
+/* Mobile */
+.location {
+  margin-top: 16px;
+  padding: 0 24px;
+  color: #777;
+  font-size: 14px;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
   .location {
-    padding: 0 24px;
-    margin-top: 16px;
-    color: #777;
+    padding: 0;
+    margin-top: 24px;
   }
+}
+
+/* Desktop */
+@media (min-width: 1200px) {
+  .location {
+    margin-top: 32px;
+    text-align: center;
+  }
+}
 </style>
