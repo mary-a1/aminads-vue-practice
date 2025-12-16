@@ -1,129 +1,133 @@
 <!-- The container for each project -->
 <template>
-  <div class="card">
-    <div class="card-content">
-      <h3 class="title">{{ title }}</h3>
+  <article class="project-card">
+    <div class="project-grid">
 
-      <p class="subtitle">{{ subtitle }}</p>
+      <!-- TEXT -->
+      <div class="project-text">
+        <h3 class="title">{{ title }}</h3>
+        <p class="subtitle">{{ subtitle }}</p>
+        <p class="description">{{ description }}</p>
 
-      <p class="description">{{ description }}</p>
+        <p class="link">
+          <strong>Live:</strong>
+          <a :href="url" target="_blank" rel="noopener noreferrer">
+            {{ url }}
+          </a>
+        </p>
+      </div>
 
-      <p class="link">
-        <strong>Live:</strong>
-        <a :href="url" target="_blank" rel="noopener noreferrer">
-          {{ url }}
-        </a>
-      </p>
+      <!-- LOGO -->
+      <div class="project-logo">
+        <img :src="logo" :alt="title + ' logo'" />
+      </div>
+
     </div>
-  </div>
+  </article>
 </template>
+
 
 <!-- Options API format ----------------------------------->
 <script>
 export default {
   name: "ProjectCard",
-  // Props allow the parent component to pass data down to this component
   props: {
     title: String,
     subtitle: String,
     description: String,
     url: String,
+    logo: String,
   },
 };
 </script>
 
 <!-- Scoped CSS = styles apply only to this component ----------------------->
 <style scoped>
-/* =========================
-   BASE (Mobile-first)
-   ========================= */
+  /* ===== BASE ===== */
+  .project-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    box-shadow: 0 1rem 2.5rem rgba(0,0,0,0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
 
-.card {
-  background: #fff;
-  padding: 1.25rem; /* 20px */
-  border-radius: 0.75rem; /* 12px */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.card-content {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Title */
-.title {
-  font-size: 1.125rem; /* 18px */
-  font-weight: 700;
-  line-height: 1.3;
-}
-
-/* Subtitle */
-.subtitle {
-  margin-top: 0.25rem;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #6b46ff;
-}
-
-/* Description */
-.description {
-  margin-top: 0.75rem;
-  font-size: 0.95rem;
-  color: #555;
-  line-height: 1.6;
-}
-
-/* Link */
-.link {
-  margin-top: 0.75rem;
-  font-size: 0.9rem;
-}
-
-.link a {
-  color: #6b46ff;
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.2s ease;
-}
-
-.link a:hover {
-  border-color: #6b46ff;
-}
-
-/* =========================
-   INTERACTION (Desktop feel)
-   ========================= */
-@media (hover: hover) {
-  .card:hover {
+  .project-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
-  }
-}
-
-/* =========================
-   TABLET
-   ========================= */
-@media (min-width: 768px) {
-  .card {
-    padding: 1.5rem;
+    box-shadow: 0 1.5rem 3rem rgba(0,0,0,0.08);
   }
 
+  .project-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--space-xl);
+    align-items: center;
+  }
+
+  /* TEXT */
   .title {
-    font-size: 1.25rem;
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--color-primary);
   }
-}
 
-/* =========================
-   DESKTOP
-   ========================= */
-@media (min-width: 1200px) {
-  .card {
-    padding: 1.75rem;
+  .subtitle {
+    margin-top: var(--space-xs);
+    color: var(--color-accent);
+    font-size: var(--text-base);
   }
 
   .description {
-    font-size: 1rem;
+    margin-top: var(--space-md);
+    color: #555;
+    line-height: 1.6;
+    max-width: 52ch;
   }
-}
+
+  .link {
+    margin-top: var(--space-md);
+    font-size: var(--text-sm);
+  }
+
+  /* LOGO */
+  .project-logo {
+    width: 5.5rem;
+    height: 5.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .project-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    opacity: 0.85;
+  }
+
+  /* ===== MOBILE ===== */
+  @media (max-width: 48rem) {
+    .project-grid {
+      grid-template-columns: 1fr;
+      text-align: left;
+    }
+
+    .project-logo {
+      order: -1;
+      margin-bottom: var(--space-md);
+      width: 4.5rem;
+      height: 4.5rem;
+    }
+  }
+
+  /* ===== DESKTOP ===== */
+  @media (min-width: 75rem) {
+    .project-card {
+      padding: var(--space-2xl);
+    }
+
+    .title {
+      font-size: var(--text-2xl);
+    }
+  }
 </style>

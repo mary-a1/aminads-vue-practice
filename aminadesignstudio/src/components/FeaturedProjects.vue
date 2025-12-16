@@ -1,4 +1,5 @@
 <!-- Wrapper for the whole section -->
+<!-- Wrapper for the whole section -->
 <template>
   <section class="section">
     <!-- Inner wrapper helps us center content on desktop -->
@@ -14,6 +15,7 @@
           subtitle="Full-stack money transfer platform (FinTech)"
           description="UX/UI, product design, and full web implementation."
           url="https://amaltransfers.ca"
+          logo="/src/assets/images/amal-logo.png"
         />
 
         <ProjectCard
@@ -21,6 +23,7 @@
           subtitle="E-commerce brand & product experience"
           description="Shopify storefront, product experience, and brand system."
           url="https://maalinactive.com"
+          logo="/src/assets/images/maalin-logo.png"
         />
 
         <ProjectCard
@@ -28,12 +31,14 @@
           subtitle="Creative portfolio & digital operations"
           description="Website, LinkedIn, pricing system, and digital portfolio."
           url="#"
+          logo="/src/assets/images/nasriina-logo.png"
         />
       </div>
 
     </div>
   </section>
 </template>
+
 
 
 <!-- Options API format ----------------------------------->
@@ -61,16 +66,65 @@
 }
 
 .section-title {
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 16px;
+  font-size: clamp(1.25rem, 3vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-xl);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
-
+.section-title::after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 48px;
+  margin-top: 8px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    var(--color-accent),
+    transparent
+  );
+}
 /* Stack cards vertically */
 .projects {
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+.project-logo {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(
+    circle at top,
+    rgba(255, 215, 0, 0.18),
+    rgba(255, 215, 0, 0.05),
+    transparent 70%
+  );
+  position: relative;
+}
+.project-logo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow:
+    0 0 0 1px rgba(255, 215, 0, 0.25),
+    0 12px 30px rgba(255, 215, 0, 0.25);
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.project-logo img {
+  max-width: 70%;
+  max-height: 70%;
+  object-fit: contain;
+  z-index: 1;
 }
 
 /* =========================
@@ -88,6 +142,14 @@
 
   .projects {
     gap: 24px;
+  }
+}
+
+@media (max-width: 48rem) {
+  .project-logo {
+    width: 5.5rem;
+    height: 5.5rem;
+    margin-bottom: var(--space-md);
   }
 }
 

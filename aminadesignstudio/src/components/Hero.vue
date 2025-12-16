@@ -1,7 +1,7 @@
 <!-- Main hero section wrapper -------------------->
 <template>
   <section class="hero">
-    <div class="hero-inner">
+    <div class="hero-inner container">
       <p class="tagline">WEB & DIGITAL PRODUCT DESIGN STUDIO</p>
 
       <h1 class="title">
@@ -12,13 +12,13 @@
       </h1>
 
       <p class="description">
-        From fintech platforms to e-commerce brands — we design and build exceptional websites and
-        digital products.
+        We design and build high-quality websites and digital products for
+        ambitious brands.
       </p>
 
       <div class="buttons">
         <button class="primary">Start a Project</button>
-        <button class="secondary">View Our Work</button>
+        <button class="secondary">View Work</button>
       </div>
 
       <LocationTag />
@@ -41,122 +41,132 @@ export default {
 <!-- Scoped CSS = styles apply only to this component ----------------------->
 <style scoped>
 /* =========================
-   BASE (Mobile-first)
+   HERO — WOW PASS
    ========================= */
 
 .hero {
-  padding: 1.5rem; /* 24px */
+  position: relative;
+  padding-block: calc(var(--space-xl) * 1.5);
+  overflow: hidden;
+}
+
+/* Soft glow anchor */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60rem;
+  height: 60rem;
+  background: radial-gradient(
+    circle,
+    rgba(124, 58, 237, 0.12),
+    transparent 60%
+  );
+  z-index: 0;
 }
 
 .hero-inner {
-  max-width: 100%;
+  position: relative;
+  max-width: 46rem;
+  z-index: 1;
 }
 
 /* Tagline */
 .tagline {
-  color: #6b46ff;
-  font-size: 0.75rem; /* 12px */
-  letter-spacing: 0.08em;
+  font-size: var(--text-xs);
+  letter-spacing: 0.14em;
   font-weight: 600;
+  color: var(--color-primary-soft);
+  margin-bottom: var(--space-sm);
 }
 
-/* Main headline */
+/* Headline */
 .title {
-  margin-top: 0.75rem;
-  font-size: 2.75rem; /* ~44px */
-  font-weight: 800;
-  line-height: 1.05;
+  font-size: var(--text-4xl);
+  font-weight: 900;
+  line-height: 1.02;
+  margin: 0;
 }
 
-/* Accent word */
 .highlight {
-  color: #7c3aed;
+  color: var(--color-primary);
 }
 
 /* Supporting copy */
 .description {
-  margin-top: 1rem;
-  font-size: 1rem;
-  color: #666;
-  line-height: 1.6;
+  margin-top: var(--space-md);
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+  max-width: 36rem;
 }
 
-/* Buttons */
+/* CTA group */
 .buttons {
-  margin-top: 1.5rem;
+  margin-top: var(--space-xl);
   display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+  gap: var(--space-md);
+  flex-wrap: wrap;
 }
 
-.primary,
-.secondary {
-  padding: 0.875rem 1rem;
-  border-radius: 0.5rem;
-  font-size: 0.95rem;
-  font-weight: 600;
-}
-
-/* Primary CTA */
+/* Primary CTA — dominant */
 .primary {
   background: #111;
-  color: #fff;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: var(--radius-md);
+  font-size: var(--text-base);
+  font-weight: 600;
   border: none;
 }
 
-/* Secondary CTA */
+/* Secondary CTA — quieter */
 .secondary {
-  background: #fff;
-  border: 1px solid #ddd;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  padding: 1rem 1.75rem;
+  border-radius: var(--radius-md);
+  font-size: var(--text-base);
 }
 
 /* =========================
-   TABLET (iPad)
+   TABLET
    ========================= */
-@media (min-width: 768px) {
-  .hero {
-    padding: 4rem 2.5rem;
+@media (min-width: 48rem) {
+  .hero-inner {
+    max-width: 54rem;
   }
 
   .title {
-    font-size: 3.5rem; /* ~56px */
+    font-size: 4.5rem;
   }
 
-  .description {
-    font-size: 1.0625rem;
+  .buttons {
+    gap: var(--space-lg);
   }
 }
 
 /* =========================
    DESKTOP
    ========================= */
-@media (min-width: 1200px) {
+@media (min-width: 75rem) {
   .hero {
-    padding: 5rem 0;
-    position: relative;
+    padding-block: calc(var(--space-xl) * 2);
   }
 
   .hero-inner {
-    max-width: 56rem; /* ~896px */
-    margin: 0 auto;
     text-align: center;
-  }
-
-  .title {
-    font-size: 4.5rem; /* 72px */
-    max-width: 56rem;
-    margin: 0 auto;
+    margin-inline: auto;
   }
 
   .description {
-    font-size: 1.25rem;
-    max-width: 40rem;
-    margin: 1.5rem auto 0;
+    margin-inline: auto;
   }
 
   .buttons {
-    flex-direction: row;
     justify-content: center;
   }
 }
+
 </style>

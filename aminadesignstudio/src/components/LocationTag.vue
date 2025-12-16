@@ -1,6 +1,7 @@
 <template>
   <div class="location">
-    📍 Toronto, Canada
+    <span class="dot" aria-hidden="true"></span>
+    <span class="text"> Toronto, Canada</span>
   </div>
 </template>
 
@@ -11,27 +12,45 @@ export default {
 </script>
 
 <style scoped>
-/* Mobile */
+/* =========================
+   BASE (Mobile-first)
+   ========================= */
 .location {
-  margin-top: 16px;
-  padding: 0 24px;
-  color: #777;
-  font-size: 14px;
+  margin-top: var(--space-lg);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-muted);
 }
 
-/* Tablet */
-@media (min-width: 768px) {
+/* Presence dot */
+.dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.12);
+}
+
+/* =========================
+   TABLET
+   ========================= */
+@media (min-width: 48rem) {
   .location {
-    padding: 0;
-    margin-top: 24px;
+    margin-top: var(--space-xl);
   }
 }
 
-/* Desktop */
-@media (min-width: 1200px) {
+/* =========================
+   DESKTOP
+   ========================= */
+@media (min-width: 75rem) {
   .location {
-    margin-top: 32px;
-    text-align: center;
+    margin-top: calc(var(--space-xl) * 1.25);
+    margin-inline: auto;
   }
 }
 </style>
