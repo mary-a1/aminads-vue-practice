@@ -1,12 +1,18 @@
 <!-- Wrapper for the whole section -->
 <!-- Wrapper for the whole section -->
 <template>
-  <section class="section">
+  <section class="section container">
     <!-- Inner wrapper helps us center content on desktop -->
     <div class="section-inner">
 
       <!-- Section title -->
-      <h2 class="section-title">✨ Featured Projects</h2>
+      <div class="section-headline">
+        <p class="eyebrow">Selected launches</p>
+        <h2 class="section-title">✨ Featured Projects</h2>
+        <p class="section-subtitle">
+          Case studies focused on launch-ready SaaS, fintech, and commerce platforms.
+        </p>
+      </div>
 
       <!-- Project list wrapper -->
       <div class="projects">
@@ -43,16 +49,14 @@
 
 <!-- Options API format ----------------------------------->
 <script>
-  // You manually import components in pure Vue
-  import ProjectCard from "./ProjectCard.vue"
+import ProjectCard from "./ProjectCard.vue";
 
-  export default {
-    name: "FeaturedProjects",
-    // Register imported components so Vue can use them
-    components: {
-      ProjectCard
-    }
-}
+export default {
+  name: "FeaturedProjects",
+  components: {
+    ProjectCard,
+  },
+};
 </script>
 
 <!-- Scoped CSS = styles apply only to this component ----------------------->
@@ -62,69 +66,47 @@
    ========================= */
 
 .section {
-  padding: 24px;
+  padding: clamp(1.5rem, 5vw, 3rem) 0;
+}
+
+.section-inner {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  padding: clamp(1.4rem, 5vw, 2.5rem);
+  box-shadow: var(--shadow-card);
+}
+
+.section-headline {
+  display: grid;
+  gap: 0.35rem;
+  margin-bottom: var(--space-lg);
+}
+
+.eyebrow {
+  font-size: 0.85rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(148, 163, 184, 0.85);
 }
 
 .section-title {
-  font-size: clamp(1.25rem, 3vw, 2rem);
+  font-size: clamp(1.75rem, 4vw, 2.4rem);
   font-weight: 800;
   letter-spacing: -0.02em;
-  margin-bottom: var(--space-xl);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
+  margin: 0;
 }
-.section-title::after {
-  content: "";
-  display: block;
-  height: 3px;
-  width: 48px;
-  margin-top: 8px;
-  border-radius: 999px;
-  background: linear-gradient(
-    90deg,
-    var(--color-accent),
-    transparent
-  );
+
+.section-subtitle {
+  color: rgba(226, 232, 240, 0.8);
+  margin: 0;
 }
+
 /* Stack cards vertically */
 .projects {
   display: flex;
   flex-direction: column;
   gap: 16px;
-}
-.project-logo {
-  width: 7rem;
-  height: 7rem;
-  border-radius: 999px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: radial-gradient(
-    circle at top,
-    rgba(255, 215, 0, 0.18),
-    rgba(255, 215, 0, 0.05),
-    transparent 70%
-  );
-  position: relative;
-}
-.project-logo::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  box-shadow:
-    0 0 0 1px rgba(255, 215, 0, 0.25),
-    0 12px 30px rgba(255, 215, 0, 0.25);
-  opacity: 0.35;
-  pointer-events: none;
-}
-
-.project-logo img {
-  max-width: 70%;
-  max-height: 70%;
-  object-fit: contain;
-  z-index: 1;
 }
 
 /* =========================
@@ -132,12 +114,7 @@
    ========================= */
 @media (min-width: 768px) {
   .section {
-    padding: 48px 40px;
-  }
-
-  .section-title {
-    font-size: 24px;
-    margin-bottom: 24px;
+    padding: 3rem 0;
   }
 
   .projects {
@@ -155,19 +132,15 @@
 
 /* =========================
    DESKTOP
-   ========================= */
+  ========================= */
 @media (min-width: 1200px) {
   .section {
-    padding: 80px 0;
+    padding: 4rem 0;
   }
 
   .section-inner {
-    max-width: 900px;
+    max-width: 980px;
     margin: 0 auto;
-  }
-
-  .section-title {
-    font-size: 28px;
   }
 
   .projects {
