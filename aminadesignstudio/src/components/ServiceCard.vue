@@ -5,9 +5,12 @@
       <span class="icon">{{ icon }}</span>
     </div>
 
-    <h3 class="title">{{ title }}</h3>
+    <div class="text">
+      <h3 class="title">{{ title }}</h3>
+      <p class="description">{{ description }}</p>
+    </div>
 
-    <p class="description">{{ description }}</p>
+    <span class="chevron" aria-hidden="true">↗</span>
   </div>
 </template>
 
@@ -32,44 +35,68 @@ export default {
     ========================= */
 
 .card {
-  background: #fff;
-  padding: 1.25rem; /* 20px */
-  border-radius: 0.75rem; /* 12px */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  background: linear-gradient(140deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  padding: 1.2rem 1.4rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: var(--shadow-card);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 /* Icon container */
 .icon-wrapper {
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 0.5rem;
-  background: rgba(124, 58, 237, 0.08);
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.9rem;
+  background: radial-gradient(circle at 20% 20%, rgba(168, 85, 247, 0.3), rgba(56, 189, 248, 0.25));
+  border: 1px solid rgba(255, 255, 255, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 0.25rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
 }
 
 /* Icon itself */
 .icon {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
+}
+
+.text {
+  display: grid;
+  gap: 0.2rem;
 }
 
 /* Title */
 .title {
-  margin-top: 0.5rem;
-  font-size: 1.1rem;
+  margin: 0;
+  font-size: 1.05rem;
   font-weight: 700;
   line-height: 1.3;
 }
 
 /* Description */
 .description {
-  margin-top: 0.5rem;
+  margin: 0;
   font-size: 0.95rem;
-  color: #555;
+  color: rgba(226, 232, 240, 0.82);
   line-height: 1.6;
+}
+
+.chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #e5e7eb;
+  font-weight: 700;
 }
 
 /* =========================
@@ -78,7 +105,8 @@ export default {
 @media (hover: hover) {
   .card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.3);
+    border-color: rgba(168, 85, 247, 0.45);
   }
 }
 
@@ -87,11 +115,11 @@ export default {
     ========================= */
 @media (min-width: 768px) {
   .card {
-    padding: 1.5rem;
+    padding: 1.35rem 1.6rem;
   }
 
   .title {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
   }
 }
 
@@ -100,7 +128,7 @@ export default {
     ========================= */
 @media (min-width: 1200px) {
   .card {
-    padding: 1.75rem;
+    padding: 1.5rem 1.85rem;
   }
 
   .description {

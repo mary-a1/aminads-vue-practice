@@ -2,26 +2,43 @@
 <template>
   <section class="hero">
     <div class="hero-inner container">
-      <p class="tagline">WEB & DIGITAL PRODUCT DESIGN STUDIO</p>
+      <div class="hero-card">
+        <div class="pill-row">
+          <span class="pill pill-primary">Product UX & SaaS creative partner</span>
+          <span class="pill pill-soft">Accepting new builds</span>
+        </div>
 
-      <h1 class="title">
-        Building <br />
-        Modern <br />
-        <span class="highlight">Digital</span> <br />
-        Experiences
-      </h1>
+        <h1 class="title">
+          Product design that feels premium, purposeful, and ready to launch.
+        </h1>
 
-      <p class="description">
-        We design and build high-quality websites and digital products for
-        ambitious brands.
-      </p>
+        <p class="description">
+          I craft crisp SaaS identities, launch-ready marketing sites, and UX systems
+          that help founders win trust on day one.
+        </p>
 
-      <div class="buttons">
-        <button class="primary">Start a Project</button>
-        <button class="secondary">View Work</button>
+        <div class="buttons">
+          <button class="primary">Start a project</button>
+          <button class="secondary">See the portfolio</button>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <span class="label">Platforms shipped</span>
+            <span class="value">30+</span>
+          </div>
+          <div class="stat">
+            <span class="label">Avg. launch time</span>
+            <span class="value">6 weeks</span>
+          </div>
+          <div class="stat">
+            <span class="label">Locations</span>
+            <span class="value">Remote · Toronto</span>
+          </div>
+        </div>
+
+        <LocationTag />
       </div>
-
-      <LocationTag />
     </div>
   </section>
 </template>
@@ -40,133 +57,160 @@ export default {
 
 <!-- Scoped CSS = styles apply only to this component ----------------------->
 <style scoped>
-/* =========================
-   HERO — WOW PASS
-   ========================= */
-
 .hero {
   position: relative;
-  padding-block: calc(var(--space-xl) * 1.5);
+  padding-block: calc(var(--space-xl) * 1.3);
   overflow: hidden;
 }
 
-/* Soft glow anchor */
 .hero::before {
   content: "";
   position: absolute;
-  top: -20%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60rem;
-  height: 60rem;
-  background: radial-gradient(
-    circle,
-    rgba(124, 58, 237, 0.12),
-    transparent 60%
-  );
-  z-index: 0;
+  inset: -20% auto auto -30%;
+  width: 32rem;
+  height: 32rem;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.12), transparent 60%);
+  filter: blur(10px);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: -15% -30% auto auto;
+  width: 28rem;
+  height: 28rem;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.12), transparent 60%);
+  filter: blur(12px);
 }
 
 .hero-inner {
   position: relative;
-  max-width: 46rem;
   z-index: 1;
 }
 
-/* Tagline */
-.tagline {
-  font-size: var(--text-xs);
-  letter-spacing: 0.14em;
-  font-weight: 600;
-  color: var(--color-primary-soft);
-  margin-bottom: var(--space-sm);
+.hero-card {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  padding: clamp(1.4rem, 4vw, 2.4rem);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(16px);
 }
 
-/* Headline */
+.pill-row {
+  display: flex;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+  margin-bottom: var(--space-md);
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(226, 232, 240, 0.9);
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 0.85rem;
+}
+
+.pill-primary {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.25), rgba(56, 189, 248, 0.22));
+  color: #f8fafc;
+  border-color: rgba(168, 85, 247, 0.35);
+}
+
+.pill-soft {
+  color: rgba(226, 232, 240, 0.8);
+}
+
 .title {
-  font-size: var(--text-4xl);
+  font-size: clamp(2rem, 5vw, 3.6rem);
   font-weight: 900;
-  line-height: 1.02;
+  line-height: 1.08;
   margin: 0;
 }
 
-.highlight {
-  color: var(--color-primary);
-}
-
-/* Supporting copy */
 .description {
   margin-top: var(--space-md);
-  font-size: var(--text-lg);
-  color: var(--color-text-muted);
-  max-width: 36rem;
+  font-size: 1.05rem;
+  color: rgba(226, 232, 240, 0.82);
+  max-width: 44rem;
 }
 
-/* CTA group */
 .buttons {
-  margin-top: var(--space-xl);
+  margin-top: var(--space-lg);
   display: flex;
-  gap: var(--space-md);
+  gap: 0.75rem;
   flex-wrap: wrap;
 }
 
-/* Primary CTA — dominant */
 .primary {
-  background: #111;
-  color: white;
-  padding: 1rem 2rem;
-  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, #a855f7, #38bdf8);
+  color: #0f172a;
+  padding: 0.95rem 1.6rem;
+  border-radius: 14px;
   font-size: var(--text-base);
-  font-weight: 600;
+  font-weight: 700;
   border: none;
+  box-shadow: 0 16px 35px rgba(56, 189, 248, 0.35);
 }
 
-/* Secondary CTA — quieter */
 .secondary {
-  background: transparent;
-  border: 1px solid var(--color-border);
-  padding: 1rem 1.75rem;
-  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(226, 232, 240, 0.88);
+  padding: 0.95rem 1.4rem;
+  border-radius: 14px;
   font-size: var(--text-base);
 }
 
-/* =========================
-   TABLET
-   ========================= */
-@media (min-width: 48rem) {
-  .hero-inner {
-    max-width: 54rem;
-  }
-
-  .title {
-    font-size: 4.5rem;
-  }
-
-  .buttons {
-    gap: var(--space-lg);
-  }
+.stats {
+  margin-top: var(--space-lg);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.85rem;
 }
 
-/* =========================
-   DESKTOP
-   ========================= */
-@media (min-width: 75rem) {
-  .hero {
-    padding-block: calc(var(--space-xl) * 2);
-  }
+.stat {
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+}
 
-  .hero-inner {
-    text-align: center;
-    margin-inline: auto;
+.label {
+  display: block;
+  font-size: 0.85rem;
+  color: rgba(148, 163, 184, 0.9);
+}
+
+.value {
+  display: block;
+  margin-top: 0.3rem;
+  font-weight: 800;
+  font-size: 1.4rem;
+}
+
+@media (min-width: 48rem) {
+  .hero-card {
+    padding: 2.4rem 2.8rem;
   }
 
   .description {
-    margin-inline: auto;
-  }
-
-  .buttons {
-    justify-content: center;
+    font-size: 1.1rem;
   }
 }
 
+@media (min-width: 75rem) {
+  .hero {
+    padding-block: var(--space-2xl);
+  }
+
+  .hero-inner {
+    max-width: 68rem;
+  }
+}
 </style>
