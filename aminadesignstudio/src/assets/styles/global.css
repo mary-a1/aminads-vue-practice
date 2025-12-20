@@ -1,0 +1,78 @@
+/* ===============================
+   CSS RESET
+================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%; /* 1rem = 16px */
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  color: #e5e7eb;
+  background: radial-gradient(circle at 20% 20%, rgba(124, 58, 237, 0.12), transparent 35%),
+    radial-gradient(circle at 80% 0%, rgba(14, 165, 233, 0.12), transparent 30%),
+    #0b1020;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+}
+
+/* ===============================
+   DESIGN TOKENS
+================================ */
+:root {
+  /* Colors */
+  --color-primary: #a855f7;
+  --color-primary-soft: #c4b5fd;
+  --color-secondary: #38bdf8;
+  --color-surface: rgba(255, 255, 255, 0.04);
+  --color-surface-strong: rgba(255, 255, 255, 0.08);
+  --color-text-main: #e5e7eb;
+  --color-text-muted: #cbd5e1;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-card-bg: rgba(17, 24, 39, 0.75);
+
+  /* Typography scale */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.4rem;
+  --text-2xl: 2rem;
+  --text-3xl: 3rem;
+  --text-4xl: 3.75rem;
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1.1rem;
+  --space-lg: 1.8rem;
+  --space-xl: 2.6rem;
+  --space-2xl: 4rem;
+
+  /* Radius */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+
+  /* Shadow */
+  --shadow-card: 0 18px 50px rgba(0, 0, 0, 0.32);
+
+  /* Layout */
+  --max-width: 72rem;
+}
+
+/* ===============================
+   LAYOUT HELPERS
+================================ */
+.container {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: 1.2rem;
+}

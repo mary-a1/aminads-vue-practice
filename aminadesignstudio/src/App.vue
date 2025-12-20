@@ -1,11 +1,14 @@
-<script setup></script>
-
+<!-- router-view is where pages load. Since you only have one page (HomeView.vue),
+ THIS tag is responsible for rendering your entire site.-->
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <router-view />
 </template>
 
-<style scoped></style>
+<script>
+  export default {
+    name: "App",
+  };
+</script>
+
+
+
