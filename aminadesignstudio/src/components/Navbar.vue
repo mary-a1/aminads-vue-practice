@@ -5,109 +5,307 @@
     <div class="navbar-inner container">
       <!-- Brand logo -->
       <div class="brand">
-        <img src="/src/assets/images/logo.png" alt="Amina Design Studio" class="logo" />
-        <span class="badge">Independent studio</span>
+        <img src="/src/assets/images/logo.png" alt="Amina Design Co." class="logo" />
+        <div class="brand-text">
+          <span class="brand-name">Amina Design Studio Co.</span>
+          <span class="badge">Independent studio</span>
+        </div>
       </div>
+      <button class="menu-toggle" @click="menuOpen = true" aria-label="Open menu">☰</button>
 
-      <button class="cta">Book intro call</button>
+      <button class="cta desktop-only" @click="scrollToContact">Book intro call</button>
     </div>
   </nav>
+
+  <!-- MOBILE MENU OVERLAY -->
+  <transition name="menu">
+    <div v-if="menuOpen" class="mobile-menu-backdrop" @click.self="closeMenu">
+      <aside class="mobile-menu">
+        <div class="menu-header">
+          <div class="brand">
+            <img src="/src/assets/images/logo.png" class="logo" />
+            <span class="brand-name">Amina Design Co.</span>
+          </div>
+
+          <button class="close" @click="closeMenu">✕</button>
+        </div>
+
+        <nav class="menu-links">
+          <a href="#projects" @click="closeMenu">Portfolio</a>
+          <a href="#services" @click="closeMenu">Services</a>
+          <a href="#about" @click="closeMenu">The Studio</a>
+          <a href="#contact" @click="closeMenu">Contact</a>
+        </nav>
+
+        <div class="menu-actions">
+          <button class="primary" @click="handleContactClick">Start a project</button>
+          <button class="secondary" @click="handleContactClick">Book intro call</button>
+        </div>
+      </aside>
+    </div>
+  </transition>
 </template>
 
 <!-- Options API format ----------------------------------->
 <script>
 export default {
-  // Component name (optional but good practice)
   name: "Navbar",
+  data() {
+    return {
+      menuOpen: false,
+    };
+  },
+  methods: {
+    toggleMenu() {
+      this.menuOpen = !this.menuOpen;
+    },
+    closeMenu() {
+      this.menuOpen = false;
+    },
+    scrollToContact() {
+      const el = document.getElementById("contact");
+      if (!el) return;
+
+      el.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    },
+    handleContactClick() {
+      this.closeMenu();
+      this.$nextTick(() => {
+        this.scrollToContact();
+      });
+    },
+  },
 };
 </script>
 
 <!-- Scoped CSS = styles apply only to this component ----------------------->
 <style scoped>
-/* Full-width nav wrapper */
+/* ======================
+   NAVBAR (Mobile-first)
+====================== */
+
 .navbar {
-  padding-block: 1rem;
   position: sticky;
   top: 0;
-  z-index: 10;
-  backdrop-filter: blur(16px);
-  background: linear-gradient(180deg, rgba(12, 17, 32, 0.85), rgba(12, 17, 32, 0.6));
+  z-index: 40;
+
+  /* Floating glass effect */
+  background: linear-gradient(180deg, rgba(12, 17, 32, 0.6), rgba(12, 17, 32, 0.25));
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
-/* Inner layout: keeps logo aligned + allows future nav/CTA */
 .navbar-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem 0.85rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 16px;
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
+
+  padding: 0.75rem 1rem;
+  background: transparent;
 }
 
-/* Logo sizing (scales by breakpoint) */
-.logo {
-  height: 2.5rem; /* ~40px */
-  display: block;
-}
+/* ======================
+   BRAND
+====================== */
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.logo {
+  height: 2.2rem;
+  flex-shrink: 0;
+}
+
+.brand-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  color: #e5e7eb;
+  margin-right: 1rem; /* subtle breathing room */
 }
 
 .badge {
-  display: inline-flex;
+  display: none; /* hidden by default (mobile-first) */
   align-items: center;
   gap: 0.35rem;
-  padding: 0.4rem 0.65rem;
+
+  padding: 0.35rem 0.65rem;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(226, 232, 240, 0.85);
+
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+
+  color: rgba(226, 232, 240, 0.75);
   background: rgba(255, 255, 255, 0.04);
-  font-size: 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .badge::before {
   content: "•";
-  color: var(--color-secondary);
+  color: #38bdf8;
   font-size: 1rem;
+  line-height: 0;
 }
 
-.cta {
+/* ======================
+   ACTIONS (Mobile default)
+====================== */
+
+/* Mobile: hamburger visible */
+.menu-toggle {
+  display: inline-flex;
+  background: none;
   border: none;
+  font-size: 1.6rem;
+  color: #e5e7eb;
+}
+
+/* Mobile: CTA hidden */
+.cta {
+  display: none;
+}
+
+/* ======================
+   MOBILE MENU
+====================== */
+
+.mobile-menu-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgba(5, 8, 20, 0.6);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.mobile-menu {
+  width: min(88%, 360px);
+  height: 100%;
+  background: linear-gradient(160deg, #0f172a, #111827);
+  padding: 1.25rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  box-shadow: -20px 0 60px rgba(0, 0, 0, 0.5);
+}
+
+/* Header */
+.menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.close {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  color: #e5e7eb;
+}
+
+/* Links */
+.menu-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.menu-links a {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #e5e7eb;
+  text-decoration: none;
+}
+
+/* Actions */
+.menu-actions {
+  margin-top: auto;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.menu-actions .primary {
+  padding: 0.85rem;
+  border-radius: 14px;
+  border: none;
+  font-weight: 700;
   background: linear-gradient(135deg, #a855f7, #38bdf8);
   color: #0f172a;
-  font-weight: 700;
-  padding: 0.75rem 1.05rem;
-  border-radius: 14px;
-  box-shadow: 0 12px 24px rgba(56, 189, 248, 0.3);
-  cursor: pointer;
 }
 
+.menu-actions .secondary {
+  padding: 0.85rem;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.04);
+  color: #e5e7eb;
+}
+
+/* ======================
+   ANIMATION
+====================== */
+
+.menu-enter-active,
+.menu-leave-active {
+  transition: opacity 0.25s ease;
+}
+.menu-enter-from,
+.menu-leave-to {
+  opacity: 0;
+}
+
+/* ======================
+   DESKTOP OVERRIDE
+====================== */
+
 @media (min-width: 768px) {
+  /* Desktop: show CTA */
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+
+    border: none;
+    border-radius: 14px;
+    padding: 0.75rem 1.2rem;
+    font-weight: 700;
+
+    background: linear-gradient(135deg, #a855f7, #38bdf8);
+    color: #0f172a;
+    box-shadow: 0 12px 24px rgba(56, 189, 248, 0.35);
+  }
+
+  /* Desktop: hide hamburger */
+  .menu-toggle {
+    display: none;
+  }
+
   .logo {
-    height: 3rem; /* ~48px */
+    height: 3rem;
   }
 
   .navbar-inner {
     padding: 0.9rem 1.15rem;
   }
-
   .badge {
-    font-size: 0.95rem;
-  }
-
-  .cta {
-    padding: 0.85rem 1.25rem;
+    display: inline-flex;
   }
 }
 
 @media (min-width: 1200px) {
   .logo {
-    height: 3.5rem; /* ~56px */
+    height: 3.5rem;
   }
 }
 </style>
