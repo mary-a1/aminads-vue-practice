@@ -2,21 +2,30 @@
 <template>
   <footer class="footer">
     <div class="footer-inner container">
-      <!-- Copyright -->
+      <!-- Brand block -->
       <div class="brand">
-        <p class="eyebrow">Amina Design Co.</p>
-        <p class="copyright">© 2024 All rights reserved.</p>
+        <div class="brand-row">
+          <img
+            src="/src/assets/images/logo.png"
+            alt="Amina Design Co."
+            class="logo"
+          />
+          <div class="brand-text">
+            <p class="brand-name">Amina Design Co.</p>
+            <p class="copyright">© 2026 All rights reserved.</p>
+          </div>
+        </div>
       </div>
 
-      <!-- Simple link list -->
+      <!-- Links -->
       <div class="links">
-        <a href="#">Contact</a>
-        <a href="#">Instagram</a>
-        <a href="#">LinkedIn</a>
+        <a href="#contact">Contact</a>
+        <a href="https://instagram.com" target="_blank">Instagram</a>
       </div>
     </div>
   </footer>
 </template>
+
 
 <script>
 export default {
@@ -71,6 +80,30 @@ export default {
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   background: rgba(255, 255, 255, 0.04);
+}
+.logo {
+  height: 2.4rem;
+  width: auto;
+  filter: drop-shadow(0 6px 18px rgba(168, 85, 247, 0.35));
+}
+
+.brand-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brand-text {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.brand-name {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #e5e7eb;
 }
 
 @media (min-width: 768px) {

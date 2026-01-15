@@ -17,6 +17,7 @@ import FeaturedProjects from "../components/FeaturedProjects.vue";
 import StudioSection from "../components/StudioSection.vue";
 import ServicesSection from "../components/ServicesSection.vue";
 import Footer from "../components/Footer.vue";
+import ContactSection from "@/components/ContactSection.vue";
 
 export default {
   name: "HomeView",
@@ -28,6 +29,7 @@ export default {
     FeaturedProjects,
     StudioSection,
     ServicesSection,
+    ContactSection,
     Footer,
   },
 };

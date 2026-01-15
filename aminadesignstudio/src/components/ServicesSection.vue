@@ -1,49 +1,52 @@
 <!-- Wrapper for the services -->
 <template>
-  <section class="section container">
+  <section id="services" class="section">
     <!-- Section title -->
-    <div class="heading">
-      <p class="eyebrow">Capabilities</p>
-      <h2 class="title">Services</h2>
-      <p class="subtitle">Comprehensive design and development for digital products</p>
-    </div>
+    <div class="container">
+      <div class="services-card">
+        <div class="heading">
+          <p class="eyebrow">Capabilities</p>
+          <h2 class="title">Services</h2>
+          <p class="subtitle">Comprehensive design and development for digital products</p>
+        </div>
+        <div class="grid">
+          <ServiceCard
+            icon="🧠"
+            title="Design Systems"
+            description="Scalable, accessible design systems that power your product growth."
+          />
 
-    <div class="grid">
-      <ServiceCard
-        icon="🧠"
-        title="Design Systems"
-        description="Scalable, accessible design systems that power your product growth."
-      />
+          <ServiceCard
+            icon="💻"
+            title="Web Development"
+            description="Fast, modern websites built with cutting-edge technologies."
+          />
 
-      <ServiceCard
-        icon="💻"
-        title="Web Development"
-        description="Fast, modern websites built with cutting-edge technologies."
-      />
+          <ServiceCard
+            icon="📱"
+            title="Digital Products"
+            description="End-to-end product design from concept to launch."
+          />
 
-      <ServiceCard
-        icon="📱"
-        title="Digital Products"
-        description="End-to-end product design from concept to launch."
-      />
+          <ServiceCard
+            icon="🛒"
+            title="E-commerce Solutions"
+            description="Custom Shopify stores and product experiences that convert."
+          />
 
-      <ServiceCard
-        icon="🛒"
-        title="E-commerce Solutions"
-        description="Custom Shopify stores and product experiences that convert."
-      />
+          <ServiceCard
+            icon="🎛"
+            title="UX/UI Design"
+            description="User-centered design that balances beauty with functionality."
+          />
 
-      <ServiceCard
-        icon="🎛"
-        title="UX/UI Design"
-        description="User-centered design that balances beauty with functionality."
-      />
-
-      <ServiceCard
-        icon="✨"
-        title="Brand Identity"
-        description="Visual systems that capture your brand’s unique story."
-      />
+          <ServiceCard
+            icon="✨"
+            title="Brand Identity"
+            description="Visual systems that capture your brand's unique story."
+          />
+        </div>
+      </div>
     </div>
   </section>
 </template>
@@ -90,21 +93,27 @@ export default {
 
 .subtitle {
   color: rgba(226, 232, 240, 0.78);
-  margin: 0;
+  padding: 10 0 0 10;
 }
 
 .grid {
   display: grid;
   gap: 0.9rem;
 }
-
+.services-card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  padding: clamp(1.4rem, 5vw, 2.5rem);
+  box-shadow: var(--shadow-card);
+}
 @media (min-width: 768px) {
   .section {
     gap: 1.75rem;
   }
 
   .grid {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.1rem;
   }
 }
@@ -115,7 +124,8 @@ export default {
   }
 
   .grid {
-    gap: 1.2rem;
+    max-width: 68rem;
+    margin-inline: auto;
   }
 }
 </style>

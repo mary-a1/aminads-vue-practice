@@ -10,7 +10,6 @@
       <p class="description">{{ description }}</p>
     </div>
 
-    <span class="chevron" aria-hidden="true">↗</span>
   </div>
 </template>
 

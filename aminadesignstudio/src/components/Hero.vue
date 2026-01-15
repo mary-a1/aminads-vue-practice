@@ -1,31 +1,29 @@
 <!-- Main hero section wrapper -------------------->
 <template>
-  <section class="hero">
+  <section id="hero" class="hero">
     <div class="hero-inner container">
       <div class="hero-card">
         <div class="pill-row">
-          <span class="pill pill-primary">Product UX & SaaS creative partner</span>
+          <span class="pill pill-primary">Digital Product & UX Studio</span>
           <span class="pill pill-soft">Accepting new builds</span>
         </div>
 
-        <h1 class="title">
-          Product design that feels premium, purposeful, and ready to launch.
-        </h1>
+        <h1 class="title">Designing and building launch-ready digital products.</h1>
 
         <p class="description">
-          I craft crisp SaaS identities, launch-ready marketing sites, and UX systems
-          that help founders win trust on day one.
+          We help fintech, SaaS, e-commerce, and growing businesses design and improve digital
+          experiences—from full platforms to focused websites and workflows.
         </p>
 
         <div class="buttons">
-          <button class="primary">Start a project</button>
-          <button class="secondary">See the portfolio</button>
+          <button class="primary" href="#contact" data-focus="project">Start a project</button>
+          <button class="secondary" href="#projects">See the portfolio</button>
         </div>
 
         <div class="stats">
           <div class="stat">
             <span class="label">Platforms shipped</span>
-            <span class="value">30+</span>
+            <span class="value">3+</span>
           </div>
           <div class="stat">
             <span class="label">Avg. launch time</span>

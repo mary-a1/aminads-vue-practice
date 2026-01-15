@@ -1,51 +1,55 @@
 <!-- Wrapper for the whole section -->
 <!-- Wrapper for the whole section -->
 <template>
-  <section class="section container">
+  <section id="projects" class="section">
     <!-- Inner wrapper helps us center content on desktop -->
-    <div class="section-inner">
+    <div class="container">
+      <div class="section-inner">
+        <!-- Section title -->
+        <div class="section-headline">
+          <p class="eyebrow">Selected launches</p>
+          <h2 class="section-title">Featured Projects</h2>
+          <p class="section-subtitle">
+            Case studies focused on launch-ready SaaS, fintech, and commerce platforms.
+          </p>
+        </div>
 
-      <!-- Section title -->
-      <div class="section-headline">
-        <p class="eyebrow">Selected launches</p>
-        <h2 class="section-title">✨ Featured Projects</h2>
-        <p class="section-subtitle">
-          Case studies focused on launch-ready SaaS, fintech, and commerce platforms.
-        </p>
+        <!-- Project list wrapper -->
+        <div class="projects">
+          <ProjectCard
+            title="Amal Transfers"
+            primaryTag="Fintech Platform"
+            secondaryTag="Shipped Product"
+            subtitle="End-to-end fintech platform"
+            description="Design and build of a live money transfer platform, covering product strategy, UX, and full web implementation."
+            url="https://amaltransfers.ca"
+            logo="/src/assets/images/amal-logo.png"
+          />
+
+          <ProjectCard
+            title="Maalin Active"
+            primaryTag="E-commerce Platform"
+            secondaryTag="Shipped Experience"
+            subtitle="E-commerce brand and product experience"
+            description="A conversion-focused Shopify experience spanning brand, storefront design, and product flows."
+            url="https://maalinactive.com"
+            logo="/src/assets/images/maalin-logo.png"
+          />
+
+          <ProjectCard
+            title="Nasriina Studio"
+            primaryTag="Digital Platform"
+            secondaryTag="Shipped Experience"
+            subtitle="Digital platform and operational systems"
+            description="A complete digital presence including website, pricing structure, and client-facing workflows."
+            url="https://nasrinastudio.com/"
+            logo="/src/assets/images/nasriina-logo.png"
+          />
+        </div>
       </div>
-
-      <!-- Project list wrapper -->
-      <div class="projects">
-        <ProjectCard
-          title="Amal Transfers"
-          subtitle="Full-stack money transfer platform (FinTech)"
-          description="UX/UI, product design, and full web implementation."
-          url="https://amaltransfers.ca"
-          logo="/src/assets/images/amal-logo.png"
-        />
-
-        <ProjectCard
-          title="Maalin Active"
-          subtitle="E-commerce brand & product experience"
-          description="Shopify storefront, product experience, and brand system."
-          url="https://maalinactive.com"
-          logo="/src/assets/images/maalin-logo.png"
-        />
-
-        <ProjectCard
-          title="Nasriina Studio"
-          subtitle="Creative portfolio & digital operations"
-          description="Website, LinkedIn, pricing system, and digital portfolio."
-          url="#"
-          logo="/src/assets/images/nasriina-logo.png"
-        />
-      </div>
-
     </div>
   </section>
 </template>
-
-
 
 <!-- Options API format ----------------------------------->
 <script>
@@ -61,12 +65,14 @@ export default {
 
 <!-- Scoped CSS = styles apply only to this component ----------------------->
 <style scoped>
+
 /* =========================
    MOBILE (default)
    ========================= */
 
 .section {
   padding: clamp(1.5rem, 5vw, 3rem) 0;
+  padding-block: calc(var(--space-xl) * 1.3);
 }
 
 .section-inner {
@@ -138,14 +144,8 @@ export default {
     padding: 4rem 0;
   }
 
-  .section-inner {
-    max-width: 980px;
-    margin: 0 auto;
-  }
-
   .projects {
     gap: 32px;
   }
 }
 </style>
-

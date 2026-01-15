@@ -1,28 +1,32 @@
 <!-- Wrapper for the entire studio/about section ------>
 <template>
-  <section class="studio container">
-    <div class="studio-card">
-      <div class="heading">
-        <p class="eyebrow">About the practice</p>
-        <h2 class="title">The Studio</h2>
-        <p class="subtitle">A nimble, founder-led design studio shaping modern digital brands.</p>
+  <section id="about" class="studio">
+    <div class="container">
+      <div class="studio-card">
+        <div class="heading">
+          <p class="eyebrow">About the practice</p>
+          <h2 class="title">The Studio</h2>
+          <p class="subtitle">
+            A founder-led digital product design studio focused on building thoughtful, launch-ready
+            experiences.
+          </p>
+        </div>
+
+        <p class="body">
+          Amina Design Co. is a Toronto-based digital product and web design studio working with
+          founders, teams, and growing businesses.
+
+          <br /><br />
+
+          We partner closely with clients to design and improve digital experiences—ranging from
+          full platforms to focused websites, landing pages, and workflows.
+
+          <br /><br />
+
+          Our approach blends product thinking, UX, and execution to help teams ship with clarity,
+          confidence, and attention to detail.
+        </p>
       </div>
-
-      <p class="body">
-        Amina Design Co. is a Toronto-based web and digital product design studio
-        specializing in crafting exceptional digital experiences for modern brands.
-
-        <br /><br />
-
-        Our approach combines strategic thinking, beautiful design, and robust development to
-        deliver solutions that scale.
-
-        <br /><br />
-
-        Whether you're launching a new platform, refreshing your digital presence, or building a
-        product from the ground up, we bring the expertise and attention to detail needed to bring
-        your vision to life.
-      </p>
     </div>
   </section>
 </template>
