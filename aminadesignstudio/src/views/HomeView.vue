@@ -5,6 +5,7 @@
     <FeaturedProjects />
     <StudioSection />
     <ServicesSection />
+    <ContactSection/>
     <Footer />
 </template>
 

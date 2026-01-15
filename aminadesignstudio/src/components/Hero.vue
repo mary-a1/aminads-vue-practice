@@ -16,8 +16,8 @@
         </p>
 
         <div class="buttons">
-          <button class="primary" href="#contact" data-focus="project">Start a project</button>
-          <button class="secondary" href="#projects">See the portfolio</button>
+          <button class="primary" @click="scrollToContact" data-focus="project">Start a project</button>
+          <button class="secondary" @click="scrollToProjects">See the portfolio</button>
         </div>
 
         <div class="stats">
@@ -50,6 +50,27 @@ export default {
   components: {
     LocationTag,
   },
+  methods:{
+    scrollToContact() {
+      const el = document.getElementById("contact");
+      if (!el) return;
+
+      el.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    },
+    scrollToProjects() {
+      const el = document.getElementById("projects");
+      if (!el) return;
+
+      el.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    },
+  }
+
 };
 </script>
 

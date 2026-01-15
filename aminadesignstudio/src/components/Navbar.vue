@@ -13,17 +13,13 @@
       </div>
       <button class="menu-toggle" @click="menuOpen = true" aria-label="Open menu">☰</button>
 
-      <button class="cta desktop-only" href="#contact">Book intro call</button>
+      <button class="cta desktop-only" @click="scrollToContact">Book intro call</button>
     </div>
   </nav>
 
   <!-- MOBILE MENU OVERLAY -->
   <transition name="menu">
-    <div
-      v-if="menuOpen"
-      class="mobile-menu-backdrop"
-      @click.self="closeMenu"
-    >
+    <div v-if="menuOpen" class="mobile-menu-backdrop" @click.self="closeMenu">
       <aside class="mobile-menu">
         <div class="menu-header">
           <div class="brand">
@@ -42,13 +38,12 @@
         </nav>
 
         <div class="menu-actions">
-          <button class="primary" href="#contact">Start a project</button>
-          <button class="secondary" href="#contact">Book intro call</button>
+          <button class="primary" @click="handleContactClick">Start a project</button>
+          <button class="secondary" @click="handleContactClick">Book intro call</button>
         </div>
       </aside>
     </div>
   </transition>
-
 </template>
 
 <!-- Options API format ----------------------------------->
@@ -67,6 +62,21 @@ export default {
     closeMenu() {
       this.menuOpen = false;
     },
+    scrollToContact() {
+      const el = document.getElementById("contact");
+      if (!el) return;
+
+      el.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    },
+    handleContactClick() {
+      this.closeMenu();
+      this.$nextTick(() => {
+        this.scrollToContact();
+      });
+    },
   },
 };
 </script>
@@ -83,11 +93,7 @@ export default {
   z-index: 40;
 
   /* Floating glass effect */
-  background: linear-gradient(
-    180deg,
-    rgba(12, 17, 32, 0.6),
-    rgba(12, 17, 32, 0.25)
-  );
+  background: linear-gradient(180deg, rgba(12, 17, 32, 0.6), rgba(12, 17, 32, 0.25));
   backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
@@ -122,7 +128,7 @@ export default {
   font-size: 0.95rem;
   white-space: nowrap;
   color: #e5e7eb;
-  margin-right: 0.25rem; /* subtle breathing room */
+  margin-right: 1rem; /* subtle breathing room */
 }
 
 .badge {
@@ -148,7 +154,6 @@ export default {
   font-size: 1rem;
   line-height: 0;
 }
-
 
 /* ======================
    ACTIONS (Mobile default)
@@ -303,5 +308,4 @@ export default {
     height: 3.5rem;
   }
 }
-
 </style>

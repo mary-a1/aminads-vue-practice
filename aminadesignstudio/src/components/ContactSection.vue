@@ -3,7 +3,7 @@
     <div class="container">
       <div class="inner">
         <div class="heading">
-          <p class="eyebrow">Let’s work together</p>
+          <p class="eyebrow">Let's work together</p>
           <h2 class="title">Contact</h2>
           <p class="subtitle">
             Tell us what you're building. We'll reply with next steps and a simple plan.
@@ -17,20 +17,12 @@
             <p class="card-subtitle">Choose what you want to do first.</p>
 
             <div class="actions">
-              <a
-                class="primary"
-                :href="emailLink"
-                @click="onEmailClick"
-              >
+              <a href="mailto:studio@aminadesignstudio.ca" class="primary email-link" @click.prevent="openEmail">
                 Email us
                 <span aria-hidden="true">→</span>
               </a>
 
-              <a
-                class="secondary"
-                href="#"
-                @click.prevent="onBookClick"
-              >
+              <a class="secondary" href="#" @click.prevent="onBookClick">
                 Book intro call (coming soon)
                 <span aria-hidden="true">↗</span>
               </a>
@@ -39,14 +31,18 @@
             <div class="small">
               <p class="small-label">Email</p>
               <p class="small-value">{{ email }}</p>
-              <p class="small-note">
-                Prefer a call? Hit “Book intro call” and we'll send times manually until Calendly is set.
+              <p class="small-note">Prefer a call?</p>
+              <p class="smaller-note">
+                <i
+                  >Hit <strong>“Email Us”</strong> and we'll send times manually until Calendly is
+                  set.</i
+                >
               </p>
             </div>
           </div>
 
           <!-- RIGHT: Form -->
-          <form class="card form" @submit.prevent="submit">
+          <form class="card form" action="https://formspree.io/f/xdaakzdp" method="POST">
             <div class="form-head">
               <h3 class="card-title">Start a project</h3>
               <p class="card-subtitle">A short intake — we'll respond within 1-2 business days.</p>
@@ -55,17 +51,29 @@
             <div class="fields">
               <label class="field">
                 <span>Name</span>
-                <input v-model.trim="form.name" type="text" placeholder="Your name" required />
+                <input
+                  name="name"
+                  v-model.trim="form.name"
+                  type="text"
+                  placeholder="Your name"
+                  required
+                />
               </label>
 
               <label class="field">
                 <span>Email</span>
-                <input v-model.trim="form.email" type="email" placeholder="you@email.com" required />
+                <input
+                  name="email"
+                  v-model.trim="form.email"
+                  type="email"
+                  placeholder="your@email.com"
+                  required
+                />
               </label>
 
               <label class="field">
                 <span>What do you need?</span>
-                <select v-model="form.need" required>
+                <select name="need" v-model="form.need" required>
                   <option disabled value="">Select one</option>
                   <option>Website / landing page</option>
                   <option>Product UX / flows</option>
@@ -78,11 +86,12 @@
               <label class="field">
                 <span>Project details</span>
                 <textarea
+                  name="details"
                   v-model.trim="form.details"
                   rows="4"
                   placeholder="What are you building, and what's the goal?"
                   required
-                />
+                ></textarea>
               </label>
             </div>
 
@@ -108,7 +117,7 @@ export default {
   name: "ContactSection",
   data() {
     return {
-      email: "hello@aminadesignco.com", // change this when ready
+      email: "studio@aminadesignstudio.ca", // change this when ready
       status: "idle",
       form: {
         name: "",
@@ -118,19 +127,6 @@ export default {
       },
     };
   },
-  computed: {
-    emailLink() {
-      const subject = encodeURIComponent("Project inquiry — Amina Design Co.");
-      const body = encodeURIComponent(
-        `Hi Amina Design Co.,\n\nName: ${this.form.name || "[Your name]"}\nEmail: ${
-          this.form.email || "[Your email]"
-        }\nNeed: ${this.form.need || "[What you need]"}\n\nDetails:\n${
-          this.form.details || "[Project details]"
-        }\n\nThanks!`
-      );
-      return `mailto:${this.email}?subject=${subject}&body=${body}`;
-    },
-  },
   methods: {
     onBookClick() {
       // For now: just scroll + set a tiny hint
@@ -139,17 +135,20 @@ export default {
       // window.open("https://calendly.com/YOURNAME/intro", "_blank", "noopener,noreferrer");
       alert("Calendly isn't set yet — email us and we'll send available times.");
     },
-    onEmailClick() {
-      // no-op (mailto handles it)
-    },
-    submit() {
-      // simple, reliable MVP: open mail client prefilled
-      this.status = "success";
-      window.location.href = this.emailLink;
+    openEmail() {
+      // Try mailto first
+      window.location.href = "mailto:studio@aminadesignstudio.ca";
+
+      // Fallback after 500ms for Gmail users
+      setTimeout(() => {
+        window.open(
+          "https://mail.google.com/mail/?view=cm&fs=1&to=studio@aminadesignstudio.ca",
+          "_blank"
+        );
+      }, 500);
     },
   },
 };
-
 </script>
 
 <style scoped>
@@ -254,7 +253,7 @@ export default {
 
 .small-label {
   margin: 0;
-  font-size: 0.85rem;
+  /* font-size: 0.85rem; */
   color: rgba(148, 163, 184, 0.9);
 }
 
@@ -266,7 +265,11 @@ export default {
 .small-note {
   margin: 0.65rem 0 0;
   color: rgba(226, 232, 240, 0.75);
-  line-height: 1.6;
+  line-height: 1;
+}
+.smaller-note {
+  color: rgba(226, 232, 240, 0.75);
+  font-size: x-small;
 }
 
 .form-head {
@@ -328,6 +331,10 @@ textarea:focus {
   margin: 0;
   color: rgba(226, 232, 240, 0.78);
   line-height: 1.6;
+}
+.email-link {
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 @media (min-width: 900px) {
