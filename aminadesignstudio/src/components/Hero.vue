@@ -1,6 +1,6 @@
 <!-- Main hero section wrapper -------------------->
 <template>
-  <section id="hero" class="hero">
+  <section id="home" class="hero">
     <div class="hero-inner container">
       <div class="hero-card">
         <div class="pill-row">

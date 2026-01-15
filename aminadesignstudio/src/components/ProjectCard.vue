@@ -15,7 +15,7 @@
     <div class="card-top">
       <div class="project-header">
         <div class="project-logo">
-          <img :src="logo" :alt="title + ' logo'" />
+          <img :src="logo" :alt="title + ' logo'" class="project-logo" />
         </div>
 
         <div class="project-heading">

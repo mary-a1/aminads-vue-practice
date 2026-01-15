@@ -5,7 +5,9 @@
     <div class="navbar-inner container">
       <!-- Brand logo -->
       <div class="brand">
-        <img src="/src/assets/images/logo.png" alt="Amina Design Co." class="logo" />
+        <a href="#home" class="brand-link">
+        <img :src="logo" alt="Amina Design Co." class="logo" />
+        </a>
         <div class="brand-text">
           <span class="brand-name">Amina Design Studio Co.</span>
           <span class="badge">Independent studio</span>
@@ -23,7 +25,7 @@
       <aside class="mobile-menu">
         <div class="menu-header">
           <div class="brand">
-            <img src="/src/assets/images/logo.png" class="logo" />
+            <img :src="logo" alt="Amina Design Co." class="logo" />
             <span class="brand-name">Amina Design Co.</span>
           </div>
 
@@ -48,11 +50,13 @@
 
 <!-- Options API format ----------------------------------->
 <script>
+import logo from "@/assets/images/logo.png";
 export default {
   name: "Navbar",
   data() {
     return {
       menuOpen: false,
+      logo,
     };
   },
   methods: {

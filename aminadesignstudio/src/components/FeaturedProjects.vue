@@ -23,7 +23,7 @@
             subtitle="End-to-end fintech platform"
             description="Design and build of a live money transfer platform, covering product strategy, UX, and full web implementation."
             url="https://amaltransfers.ca"
-            logo="/src/assets/images/amal-logo.png"
+            :logo="amalLogo"
           />
 
           <ProjectCard
@@ -33,7 +33,7 @@
             subtitle="E-commerce brand and product experience"
             description="A conversion-focused Shopify experience spanning brand, storefront design, and product flows."
             url="https://maalinactive.com"
-            logo="/src/assets/images/maalin-logo.png"
+            :logo="maalinLogo"
           />
 
           <ProjectCard
@@ -43,7 +43,7 @@
             subtitle="Digital platform and operational systems"
             description="A complete digital presence including website, pricing structure, and client-facing workflows."
             url="https://nasrinastudio.com/"
-            logo="/src/assets/images/nasriina-logo.png"
+            :logo="nasriinaLogo"
           />
         </div>
       </div>
@@ -53,10 +53,20 @@
 
 <!-- Options API format ----------------------------------->
 <script>
+import amalLogo from "@/assets/images/amal-logo.png";
+import maalinLogo from "@/assets/images/maalin-logo.png";
+import nasriinaLogo from "@/assets/images/nasriina-logo.png";
 import ProjectCard from "./ProjectCard.vue";
 
 export default {
   name: "FeaturedProjects",
+  data() {
+    return {
+      amalLogo,
+      maalinLogo,
+      nasriinaLogo,
+    };
+  },
   components: {
     ProjectCard,
   },
@@ -65,7 +75,6 @@ export default {
 
 <!-- Scoped CSS = styles apply only to this component ----------------------->
 <style scoped>
-
 /* =========================
    MOBILE (default)
    ========================= */
